@@ -25,7 +25,21 @@ class ProductController extends Controller
     }
 
     public function create(Request $request) {
-        $createdProduct = Products::create($request->all());
+        $requestData = $request->all();
+
+        $customthumb = request()->file('image');
+            $filenamethumb = preg_replace(
+                '/\s+/',
+                '',
+                pathinfo($customthumb->getClientOriginalName(), PATHINFO_FILENAME) .
+                random_int(0, 100) .
+                '.' .
+                $customthumb->getClientOriginalExtension()
+            );
+        $customthumb->move(public_path() . '/images', $filenamethumb);
+        $requestData['image'] = 'images/' . $filenamethumb;
+
+        $createdProduct = Products::create($requestData);
         return response()->json($createdProduct, 201);
     }
 

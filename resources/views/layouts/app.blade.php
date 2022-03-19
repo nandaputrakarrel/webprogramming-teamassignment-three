@@ -36,6 +36,24 @@
 
                     </ul>
 
+                    <!-- Center Side Of Navbar -->
+                    <ul class="navbar-nav">
+                    @guest
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="menuDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                   Menu
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="menuDropdown">
+                                    <a class="dropdown-item nav-link" href="{{ route('products') }}">
+                                        Products
+                                    </a>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
+
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->

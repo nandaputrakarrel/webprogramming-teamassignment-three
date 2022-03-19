@@ -43,13 +43,13 @@
                             <label for="gender" class="col-md-4 col-form-label text-md-end">{{ __('Gender') }}</label>
                             <div class="col-md-6 pt-2">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender" id="male" checked>
+                                    <input class="form-check-input" type="radio" name="gender" id="male" value="Male" checked>
                                     <label class="form-check-label" for="flexRadioDefault1">
                                         Male
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender" id="female">
+                                    <input class="form-check-input" type="radio" name="gender" id="female" value="Female">
                                     <label class="form-check-label" for="flexRadioDefault2">
                                         Female
                                     </label>

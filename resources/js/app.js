@@ -5,6 +5,8 @@
  */
 
 require('./bootstrap');
+import VModal from 'vue-js-modal';
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 
 window.Vue = require('vue').default;
 
@@ -20,6 +22,10 @@ window.Vue = require('vue').default;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('products-viewlist', require('./components/Products/ViewList.vue').default);
+Vue.use(VModal);
+Vue.use(BootstrapVue);
+Vue.use(IconsPlugin);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

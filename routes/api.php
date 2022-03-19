@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,5 +19,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('products', [ProductController::class, 'getAll']);
 Route::get('products/{id}', [ProductController::class, 'getById']);
 Route::post('products', [ProductController::class, 'create']);
-Route::put('products/{id}', [ProductController::class, 'update']);
-Route::delete('products/{id}', [ProductController::class, 'delete']);
+Route::post('products/{id}/update', [ProductController::class, 'update']);
+Route::post('products/{id}/delete', [ProductController::class, 'delete']);
+
+Route::get('users', [UserController::class, 'getAll']);
+Route::get('users/{email}', [UserController::class, 'getByEmail']);
+Route::post('users', [UserController::class, 'create']);
+Route::put('users/{email}', [UserController::class, 'update']);
+Route::delete('users/{email}', [UserController::class, 'delete']);
