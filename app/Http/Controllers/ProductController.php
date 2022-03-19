@@ -45,7 +45,20 @@ class ProductController extends Controller
 
     public function update(Request $request, $id) {
         $selectedProduct = Products::find($id);
-        $selectedProduct->update($request->all());
+        $requestData = $request->all();
+
+        $customthumb = request()->file('image');
+            $filenamethumb = preg_replace(
+                '/\s+/',
+                '',
+                pathinfo($customthumb->getClientOriginalName(), PATHINFO_FILENAME) .
+                random_int(0, 100) .
+                '.' .
+                $customthumb->getClientOriginalExtension()
+            );
+        $customthumb->move(public_path() . '/images', $filenamethumb);
+        $requestData['image'] = 'images/' . $filenamethumb;
+        $selectedProduct->update($requestData);
 
         return response()->json($selectedProduct, 200);
     }
