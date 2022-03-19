@@ -36,7 +36,9 @@ class UserController extends Controller
         $selectedUser = User::where('email', $email)->first();
 
         $requestData = $request->all();
-        $requestData['password'] = Hash::make($requestData['password']);
+        if (array_key_exists('password', $requestData)) {
+            $requestData['password'] = Hash::make($requestData['password']);
+        }
 
         $selectedUser->update($requestData);
 

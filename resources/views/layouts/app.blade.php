@@ -49,6 +49,9 @@
                                     <a class="dropdown-item nav-link" href="{{ route('products') }}">
                                         Products
                                     </a>
+                                    <a class="dropdown-item nav-link" href="{{ route('users') }}">
+                                        Users
+                                    </a>
                                 </div>
                             </li>
                         @endguest

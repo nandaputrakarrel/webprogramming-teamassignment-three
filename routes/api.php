@@ -25,5 +25,5 @@ Route::post('products/{id}/delete', [ProductController::class, 'delete']);
 Route::get('users', [UserController::class, 'getAll']);
 Route::get('users/{email}', [UserController::class, 'getByEmail']);
 Route::post('users', [UserController::class, 'create']);
-Route::put('users/{email}', [UserController::class, 'update']);
-Route::delete('users/{email}', [UserController::class, 'delete']);
+Route::post('users/{email}/update', [UserController::class, 'update']);
+Route::post('users/{email}/delete', [UserController::class, 'delete']);

@@ -23,6 +23,7 @@ window.Vue = require('vue').default;
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('products-viewlist', require('./components/Products/ViewList.vue').default);
+Vue.component('users-viewlist', require('./components/Users/ViewList.vue').default);
 Vue.use(VModal);
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
