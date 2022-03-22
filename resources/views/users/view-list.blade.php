@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <users-viewlist></users-viewlist>
+            <users-viewlist v-bind:user="{{ json_encode(Auth::user()) }}"></users-viewlist>
         </div>
     </div>
 </div>

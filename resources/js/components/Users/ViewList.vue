@@ -2,6 +2,7 @@
   <div class="card">
       <div class="card-header d-flex justify-content-between align-items-center">
         User List
+        <button @click="actionAdd" v-if="isUserAdmin">Add</button>
       </div>
       <div class="card-body">
           <table class="table">
@@ -12,7 +13,7 @@
                       <th scope="col">Email</th>
                       <th scope="col">Gender</th>
                       <th scope="col">Birth Date</th>
-                      <th scope="col">Action</th>
+                      <th scope="col" v-if="isUserAdmin">Action</th>
                   </tr>
               </thead>
               <tbody>
@@ -22,8 +23,8 @@
                       <td>{{item.email}}</td>
                       <td>{{item.gender}}</td>
                       <td>{{item.birthdate}}</td>
-                      <td>
-                        <div class="d-flex">
+                      <td v-if="isUserAdmin">
+                        <div class="d-flex" >
                           <button @click="actionEdit(item)">Edit</button>
                           <button @click="actionDelete(item)">Delete</button>
                         </div>
@@ -90,6 +91,46 @@
             ></b-form-datepicker>
           </b-form-group>
 
+          <b-form-group
+            id="groupPassword"
+            label="Password :"
+            label-for="password"
+            description="Enter password of the user."
+          >
+            <b-form-input
+              id="password"
+              v-model="selectedData.password"
+              type="password"
+              placeholder="Enter Password"
+              required
+              :state="isPasswordValid"
+            ></b-form-input>
+
+            <b-form-invalid-feedback id="input-live-feedback">
+              Enter at least 8 letters
+            </b-form-invalid-feedback>
+          </b-form-group>
+
+          <b-form-group
+            id="groupPasswordConfirm"
+            label="Re-type Password :"
+            label-for="passwordConfirm"
+            description="Re-type password of the user."
+          >
+            <b-form-input
+              id="passwordConfirm"
+              v-model="selectedData.passwordConfirm"
+              type="password"
+              placeholder="Re-type Password"
+              required
+              :state="isPasswordConfirmValid"
+            ></b-form-input>
+
+            <b-form-invalid-feedback id="input-live-feedback">
+              Enter at least 8 letters and match the password
+            </b-form-invalid-feedback>
+          </b-form-group>
+
           <div class="d-flex justify-content-around w-100">
             <button class="mt-2">Save</button>
             <button class="mt-2" @click="actionCloseModal">Close</button>
@@ -111,13 +152,17 @@
 import formatter from '../../formatter';
 
 export default {
+  props: ['user'],
   data () {
       return {
         items: null,
         formatter,
         isEditing: false,
         selectedData: {
-          email: null
+          id: null,
+          email: null,
+          password: "",
+          passwordConfirm: "",
         },
         image: [],
         toastMessage: null,
@@ -126,11 +171,25 @@ export default {
   mounted () {
     this.fetchData();
   },
+  computed: {
+    isUserAdmin() {
+      return this.user.roleId == 1;
+    },
+    isPasswordValid() {
+      return this.selectedData.password.length > 7 ? true : false
+    },
+    isPasswordConfirmValid() {
+      return this.selectedData.passwordConfirm.length > 7 && this.selectedData.password === this.selectedData.passwordConfirm ? true : false
+    }
+  },
   methods: {
     fetchData() {
       axios
       .get('api/users')
       .then(response => (this.items = response.data))
+    },
+    actionAdd() {
+      this.$modal.show('user-modal');
     },
     actionEdit(payload) {
       this.selectedData = {...payload};
@@ -179,7 +238,10 @@ export default {
     },
     actionCloseModal() {
       this.selectedData = {
-        id: null
+        id: null,
+        email: null,
+        password: "",
+        passwordConfirm: "",
       };
       this.isEditing = false;
       this.$modal.hide('user-modal');
@@ -187,7 +249,10 @@ export default {
     },
     actionCloseDeleteModal() {
       this.selectedData = {
-        id: null
+        id: null,
+        email: null,
+        password: "",
+        passwordConfirm: "",
       };
       this.$modal.hide('delete-modal');
       this.fetchData();
