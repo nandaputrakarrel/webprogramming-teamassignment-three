@@ -22,7 +22,8 @@ class UserSeeder extends Seeder
             'email' => 'testing@gmail.com',
             'gender' => 'male',
             'birthdate' => '2000-01-01',
-            'password' => '$2y$10$Cp67YzXZti91I29gzEGYXuIYPIUDnfjIQ3c8liSKAbznrXNiLveNS' // password
+            'password' => '$2y$10$Cp67YzXZti91I29gzEGYXuIYPIUDnfjIQ3c8liSKAbznrXNiLveNS', // password
+            'roleId' => 1
         ]);
     }
 }
