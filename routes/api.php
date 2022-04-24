@@ -15,15 +15,3 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::get('products', [ProductController::class, 'getAll']);
-Route::get('products/{id}', [ProductController::class, 'getById']);
-Route::post('products', [ProductController::class, 'create']);
-Route::post('products/{id}/update', [ProductController::class, 'update']);
-Route::post('products/{id}/delete', [ProductController::class, 'delete']);
-
-Route::get('users', [UserController::class, 'getAll']);
-Route::get('users/{email}', [UserController::class, 'getByEmail']);
-Route::post('users', [UserController::class, 'create']);
-Route::post('users/{email}/update', [UserController::class, 'update']);
-Route::post('users/{email}/delete', [UserController::class, 'delete']);

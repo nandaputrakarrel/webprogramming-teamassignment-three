@@ -22,8 +22,7 @@ window.Vue = require('vue').default;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('products-viewlist', require('./components/Products/ViewList.vue').default);
-Vue.component('users-viewlist', require('./components/Users/ViewList.vue').default);
+Vue.component('score-view', require('./components/Score/CalculateScore.vue').default);
 Vue.use(VModal);
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);

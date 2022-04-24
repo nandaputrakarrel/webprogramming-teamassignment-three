@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Team 1 Web Programming TK 2</title>
+    <title>Team 1 Web Programming TK 3</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Team 1 Web Programming TK 2
+                    Team 1 Web Programming TK 3
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -46,11 +46,8 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="menuDropdown">
-                                    <a class="dropdown-item nav-link" href="{{ route('products') }}">
-                                        Products
-                                    </a>
-                                    <a class="dropdown-item nav-link" href="{{ route('users') }}">
-                                        Users
+                                    <a class="dropdown-item nav-link" href="{{ route('score') }}">
+                                        Score
                                     </a>
                                 </div>
                             </li>
